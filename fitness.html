@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Wellness</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #faf9f5;
+            color: #38463d;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #fff;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #587b62;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #38463d;
+            margin: 0 9px;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: #587b62;
+        }
+
+        .hero {
+            min-height: 430px;
+            padding: 55px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+            background: #e9eee3;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            color: #405e49;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            margin-bottom: 25px;
+        }
+
+        .hero img {
+            width: 45%;
+            max-width: 460px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 45% 45% 12px 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 22px;
+            background: #587b62;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background: #3e5c47;
+        }
+
+        section {
+            padding: 50px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #405e49;
+            font-size: 29px;
+            margin-bottom: 10px;
+        }
+
+        .section-text {
+            text-align: center;
+            color: #69736a;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px #e8e8df;
+        }
+
+        .card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            color: #587b62;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #687169;
+        }
+
+        .meditation {
+            background: #f0eee5;
+        }
+
+        .instructor-card {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .instructor-card img {
+            height: 230px;
+        }
+
+        .schedule-wrap {
+            overflow-x: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 14px;
+            border-bottom: 1px solid #e2e5dd;
+        }
+
+        th {
+            background: #e9eee3;
+            color: #405e49;
+        }
+
+        .plans {
+            background: #e9eee3;
+        }
+
+        .plan-card {
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        .plan-card .price {
+            font-size: 30px;
+            font-weight: bold;
+            color: #587b62;
+            margin: 15px 0;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .plan-card li {
+            margin: 8px 0;
+        }
+
+        .articles .card img {
+            height: 190px;
+        }
+
+        .quote {
+            background: #587b62;
+            color: white;
+            text-align: center;
+            padding: 45px 12%;
+        }
+
+        .quote p {
+            font-size: 22px;
+            font-style: italic;
+        }
+
+        footer {
+            background: #2f4435;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        @media (max-width: 850px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                text-align: center;
+                line-height: 2.4;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero img {
+                width: 80%;
+                height: 280px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero img {
+                width: 100%;
+                height: 240px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 35px 5%;
+            }
+
+            .section-title {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Serenity Wellness</div>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#yoga">Yoga</a>
+            <a href="#meditation">Meditation</a>
+            <a href="#instructors">Instructors</a>
+            <a href="#schedule">Classes</a>
+            <a href="#membership">Membership</a>
+            <a href="#articles">Articles</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Find Your Balance, One Breath at a Time</h1>
+                <p>
+                    Take a break from your busy day and reconnect with yourself.
+                    Explore yoga, meditation and simple habits for a healthier,
+                    more peaceful lifestyle.
+                </p>
+                <a href="#schedule" class="btn">Explore Our Classes</a>
+            </div>
+
+            <img
+                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=900"
+                alt="Person practicing yoga in a peaceful setting">
+        </section>
+
+        <section id="yoga">
+            <h2 class="section-title">Explore Yoga Poses</h2>
+            <p class="section-text">
+                Discover simple poses to support flexibility, balance and relaxation.
+            </p>
+
+            <div class="grid">
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600"
+                        alt="Yoga practice on a mat">
+                    <div class="card-content">
+                        <h3>Mountain Pose</h3>
+                        <p>A standing pose that encourages upright posture,
+                           steady breathing and body awareness.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1562088287-bde35a1ea917?w=600"
+                        alt="Person doing a yoga stretch">
+                    <div class="card-content">
+                        <h3>Tree Pose</h3>
+                        <p>A balancing pose that helps develop concentration
+                           and body stability.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600"
+                        alt="Quiet mindfulness and yoga practice">
+                    <div class="card-content">
+                        <h3>Child's Pose</h3>
+                        <p>A gentle resting pose often used during yoga
+                           sessions to relax and pause.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation" id="meditation">
+            <h2 class="section-title">Meditation Techniques</h2>
+            <p class="section-text">
+                Make a little room in your day for calm and awareness.
+            </p>
+
+            <div class="grid">
+                <article class="card">
+                    <div class="card-content">
+                        <h3>Mindful Breathing</h3>
+                        <p>Sit comfortably and notice your natural breathing
+                           for five minutes without judging your thoughts.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-content">
+                        <h3>Body Scan</h3>
+                        <p>Slowly bring your attention to different parts
+                           of your body and notice any sensations.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-content">
+                        <h3>Guided Meditation</h3>
+                        <p>Follow a calm spoken meditation to help you
+                           settle your attention and unwind.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="instructors">
+            <h2 class="section-title">Meet Our Instructors</h2>
+            <p class="section-text">
+                Learn at your own pace with supportive guidance.
+            </p>
+
+            <div class="grid">
+                <article class="card instructor-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500"
+                        alt="Portrait of a woman">
+                    <div class="card-content">
+                        <h3>Ananya Rao</h3>
+                        <p>Yoga Instructor</p>
+                        <p>Specializes in beginner-friendly yoga and flexibility.</p>
+                    </div>
+                </article>
+
+                <article class="card instructor-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500"
+                        alt="Portrait of a man">
+                    <div class="card-content">
+                        <h3>Rahul Mehta</h3>
+                        <p>Meditation Coach</p>
+                        <p>Focuses on mindfulness and breathing practices.</p>
+                    </div>
+                </article>
+
+                <article class="card instructor-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500"
+                        alt="Portrait of a wellness professional">
+                    <div class="card-content">
+                        <h3>Meera Singh</h3>
+                        <p>Wellness Guide</p>
+                        <p>Encourages mindful routines and healthy daily habits.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <h2 class="section-title">Weekly Class Schedule</h2>
+            <p class="section-text">
+                Choose a class that fits your routine.
+            </p>
+
+            <div class="schedule-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Class</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beginner Yoga</td>
+                            <td>Monday</td>
+                            <td>7:00 AM</td>
+                            <td>Ananya</td>
+                        </tr>
+                        <tr>
+                            <td>Mindful Meditation</td>
+                            <td>Tuesday</td>
+                            <td>6:00 PM</td>
+                            <td>Rahul</td>
+                        </tr>
+                        <tr>
+                            <td>Stretch and Relax</td>
+                            <td>Wednesday</td>
+                            <td>8:00 AM</td>
+                            <td>Ananya</td>
+                        </tr>
+                        <tr>
+                            <td>Guided Meditation</td>
+                            <td>Friday</td>
+                            <td>6:30 PM</td>
+                            <td>Rahul</td>
+                        </tr>
+                        <tr>
+                            <td>Weekend Wellness</td>
+                            <td>Saturday</td>
+                            <td>9:00 AM</td>
+                            <td>Meera</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="plans" id="membership">
+            <h2 class="section-title">Membership Plans</h2>
+            <p class="section-text">
+                Simple options for your wellness journey.
+            </p>
+
+            <div class="grid">
+                <article class="card plan-card">
+                    <h3>Basic</h3>
+                    <p class="price">₹499</p>
+                    <p>Per month</p>
+                    <ul>
+                        <li>4 yoga classes</li>
+                        <li>Beginner sessions</li>
+                        <li>Wellness articles</li>
+                    </ul>
+                    <a href="#contact" class="btn">Choose Plan</a>
+                </article>
+
+                <article class="card plan-card">
+                    <h3>Standard</h3>
+                    <p class="price">₹999</p>
+                    <p>Per month</p>
+                    <ul>
+                        <li>8 yoga classes</li>
+                        <li>Meditation sessions</li>
+                        <li>Wellness workshops</li>
+                    </ul>
+                    <a href="#contact" class="btn">Choose Plan</a>
+                </article>
+
+                <article class="card plan-card">
+                    <h3>Premium</h3>
+                    <p class="price">₹1,499</p>
+                    <p>Per month</p>
+                    <ul>
+                        <li>Unlimited group classes</li>
+                        <li>Guided meditation</li>
+                        <li>Personal wellness guidance</li>
+                    </ul>
+                    <a href="#contact" class="btn">Choose Plan</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="articles" id="articles">
+            <h2 class="section-title">Wellness Articles</h2>
+            <p class="section-text">
+                Small ideas to help you build a balanced everyday routine.
+            </p>
+
+            <div class="grid">
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=600"
+                        alt="Sunlight over a peaceful landscape">
+                    <div class="card-content">
+                        <h3>Build a Morning Routine</h3>
+                        <p>Start your day with gentle movement, water
+                           and a few quiet moments.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600"
+                        alt="Peaceful meditation setting">
+                    <div class="card-content">
+                        <h3>Make Time for Mindfulness</h3>
+                        <p>Simple ways to pause, notice your surroundings
+                           and return your attention to the present.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600"
+                        alt="Person exercising on a yoga mat">
+                    <div class="card-content">
+                        <h3>Move at Your Own Pace</h3>
+                        <p>Learn why consistent, comfortable movement
+                           can be a useful part of daily wellbeing.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="quote">
+            <p>"Take a deep breath, slow down, and give yourself
+               the same care you give to others."</p>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Join Our Wellness Community</h2>
+            <p class="section-text">
+                Ready to begin? Contact us to learn more about classes and memberships.
+            </p>
+            <p style="text-align:center;">
+                <a class="btn" href="mailto:hello@example.com">Contact Us</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Serenity Wellness</p>
+        <p>Find balance. Practice kindness. Grow every day.</p>
+    </footer>
+
+</body>
+</html>

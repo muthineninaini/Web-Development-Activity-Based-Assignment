@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus Hospital</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 5px #ddd;
+        }
+
+        .logo {
+            color: #087e8b;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 9px;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: #087e8b;
+        }
+
+        .hero {
+            background: #dff4f5;
+            padding: 60px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            color: #075e67;
+            font-size: 38px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            margin-bottom: 20px;
+        }
+
+        .hero img {
+            width: 40%;
+            max-width: 400px;
+            border-radius: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #087e8b;
+            color: white;
+            text-decoration: none;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background: #055d66;
+        }
+
+        section {
+            padding: 40px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #075e67;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        .department-grid,
+        .doctor-grid,
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 8px;
+            box-shadow: 0 2px 7px #e1e8eb;
+        }
+
+        .card h3 {
+            color: #087e8b;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+
+        .doctor-card {
+            text-align: center;
+        }
+
+        .doctor-card img {
+            width: 115px;
+            height: 115px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .specialties {
+            background: #e9f5f7;
+            text-align: center;
+        }
+
+        .specialty-list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .specialty {
+            background: white;
+            border: 1px solid #cce4e7;
+            border-radius: 6px;
+            padding: 12px 20px;
+        }
+
+        .hours {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #e9f5f7;
+        }
+
+        .emergency {
+            background: #fff0ed;
+            border-left: 5px solid #c62828;
+            padding: 25px;
+            border-radius: 5px;
+        }
+
+        .emergency h2 {
+            color: #b71c1c;
+            margin-bottom: 10px;
+        }
+
+        .appointment {
+            background: #e9f5f7;
+        }
+
+        form {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 7px #ddd;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #087e8b;
+            outline-offset: 2px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-note {
+            font-size: 13px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        footer {
+            background: #164b52;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        @media (max-width: 800px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                text-align: center;
+                line-height: 2.4;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero img {
+                width: 75%;
+            }
+
+            .department-grid,
+            .doctor-grid,
+            .facility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .department-grid,
+            .doctor-grid,
+            .facility-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 30px 5%;
+            }
+
+            form {
+                padding: 18px;
+            }
+
+            th, td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">CarePlus Hospital</div>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#departments">Departments</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#hours">Visiting Hours</a>
+            <a href="#appointment">Appointment</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Your Health Is Our Priority</h1>
+                <p>
+                    Welcome to CarePlus Hospital. We are committed to providing
+                    quality healthcare, experienced medical professionals and
+                    compassionate care for every patient.
+                </p>
+                <a href="#appointment" class="btn">Request Appointment</a>
+            </div>
+
+            <img
+                src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=700"
+                alt="Medical professionals working in a hospital">
+        </section>
+
+        <section id="departments">
+            <h2 class="section-title">Our Departments</h2>
+
+            <div class="department-grid">
+                <article class="card">
+                    <h3>Cardiology</h3>
+                    <p>Heart health, heart disease evaluation and cardiac care.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Neurology</h3>
+                    <p>Care and evaluation for brain and nervous system conditions.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Orthopedics</h3>
+                    <p>Treatment for bone, joint and muscle problems.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Pediatrics</h3>
+                    <p>Medical care for infants, children and adolescents.</p>
+                </article>
+
+                <article class="card">
+                    <h3>General Medicine</h3>
+                    <p>Routine checkups, common illnesses and preventive care.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Emergency Care</h3>
+                    <p>Urgent medical assessment and emergency treatment.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="doctors">
+            <h2 class="section-title">Meet Our Doctors</h2>
+
+            <div class="doctor-grid">
+                <article class="card doctor-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300"
+                        alt="Portrait of a doctor">
+                    <h3>Dr. Pavan </h3>
+                    <p>Cardiologist</p>
+                    <p>Experience: 12 years</p>
+                </article>
+
+                <article class="card doctor-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300"
+                        alt="Portrait of a female doctor">
+                    <h3>Dr. Priya Sharma</h3>
+                    <p>Pediatrician</p>
+                    <p>Experience: 9 years</p>
+                </article>
+
+                <article class="card doctor-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300"
+                        alt="Portrait of a male doctor">
+                    <h3>Dr. Rahul Reddy</h3>
+                    <p>Orthopedic Specialist</p>
+                    <p>Experience: 10 years</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="specialties">
+            <h2 class="section-title">Our Specialties</h2>
+
+            <div class="specialty-list">
+                <div class="specialty">Preventive Health Checkups</div>
+                <div class="specialty">Diagnostic Services</div>
+                <div class="specialty">Minor Procedures</div>
+                <div class="specialty">Women's Healthcare</div>
+                <div class="specialty">Rehabilitation</div>
+                <div class="specialty">Patient Counseling</div>
+            </div>
+        </section>
+
+        <section id="facilities">
+            <h2 class="section-title">Hospital Facilities</h2>
+
+            <div class="facility-grid">
+                <article class="card">
+                    <h3>Modern Laboratory</h3>
+                    <p>Laboratory services for routine diagnostic tests.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Pharmacy</h3>
+                    <p>Convenient access to prescribed medicines.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Patient Rooms</h3>
+                    <p>Comfortable rooms designed for patient care and recovery.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Ambulance Service</h3>
+                    <p>Emergency transport. Contact the hospital to confirm availability.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Diagnostic Imaging</h3>
+                    <p>Imaging services such as X-rays, subject to availability.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Waiting Area</h3>
+                    <p>A clean and comfortable space for patients and visitors.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="hours">
+            <h2 class="section-title">Visiting Hours</h2>
+
+            <div class="hours">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Service</th>
+                            <th scope="col">Days</th>
+                            <th scope="col">Timings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Outpatient Department</td>
+                            <td>Monday - Saturday</td>
+                            <td>9 AM - 5 PM</td>
+                        </tr>
+                        <tr>
+                            <td>General Visiting</td>
+                            <td>Monday - Sunday</td>
+                            <td>4 PM - 6 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Department</td>
+                            <td>Every day</td>
+                            <td>24 hours*</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="form-note">
+                    *Sample timings for this website project. Actual hours may differ.
+                    Please confirm visiting rules before travelling.
+                </p>
+            </div>
+        </section>
+
+        <section id="emergency">
+            <div class="emergency">
+                <h2>Emergency Contact</h2>
+                <p>For urgent medical assistance, contact your local emergency service.</p>
+                <p><strong>Emergency number (India):</strong>
+                    <a href="tel:112">112</a>
+                </p>
+                <p><strong>Hospital phone:</strong> Replace with the hospital's verified number.</p>
+                <p><strong>Address:</strong> Add the hospital's actual address here.</p>
+            </div>
+        </section>
+
+        <section class="appointment" id="appointment">
+            <h2 class="section-title">Request an Appointment</h2>
+
+            <form action="#" method="get">
+                <p class="form-note">
+                    Fields marked with * are required. This form is a demonstration
+                    and does not send information to a hospital.
+                </p>
+
+                <div class="form-group">
+                    <label for="fullname">Full Name *</label>
+                    <input type="text" id="fullname" name="fullname"
+                           autocomplete="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email"
+                           autocomplete="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone"
+                           autocomplete="tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Choose Department *</label>
+                    <select id="department" name="department" required>
+                        <option value="">Select a department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="general-medicine">General Medicine</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="doctor">Preferred Doctor</label>
+                    <select id="doctor" name="doctor">
+                        <option value="">No preference</option>
+                        <option value="pavan">Dr. Pavan</option>
+                        <option value="priya sharma">Dr. Priya Sharma</option>
+                        <option value="rahul reddy">Dr. Rahul Reddy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Preferred Appointment Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea id="message" name="message"
+                              placeholder="Enter a brief message (optional)"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Submit Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>CarePlus Hospital | Caring for Every Life</p>
+        <p>Website project for demonstration purposes</p>
+        <p>Contact details and hospital information must be verified before use.</p>
+    </footer>
+
+</body>
+</html>
